@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "ticket.star.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

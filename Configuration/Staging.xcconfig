@@ -1,0 +1,20 @@
+//
+//  Staging.xcconfig
+//  rush
+//
+//  Created by Supermove on 12/27/23.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "./Shared.xcconfig"
+
+OTHER_SWIFT_FLAGS[config=DEBUG][sdk=*] = $(inherited) -DSTAGING
+
+BASE_URL = http:/$()/43.200.64.184
+
+APP_NAME = 슈퍼무브 (Staging)
+APP_BUNDLE_IDENTIFIER = kr.co.supermove.rush.staging
+
+FIREBASE_GOOGLE_APP_ID = 1:757105590305:ios:096e60e9328053bf586360

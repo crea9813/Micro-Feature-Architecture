@@ -1,0 +1,20 @@
+//
+//  Production.xcconfig
+//  rush
+//
+//  Created by Supermove on 12/27/23.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "./Shared.xcconfig"
+
+OTHER_SWIFT_FLAGS[config=DEBUG][sdk=*] = $(inherited) -DPRODUCTION
+
+BASE_URL = https:/$()/app.supermove.co.kr
+
+APP_NAME = 슈퍼무브
+APP_BUNDLE_IDENTIFIER = kr.co.supermove.rush
+
+FIREBASE_GOOGLE_APP_ID = 1:757105590305:ios:096e60e9328053bf586360

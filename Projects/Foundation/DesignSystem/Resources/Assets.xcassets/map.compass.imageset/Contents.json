@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "maps_compass.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

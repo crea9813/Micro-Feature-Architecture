@@ -1,0 +1,41 @@
+import os
+import json
+
+# Get the current directory where this script is located
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Set the path to the xcstrings file relative to the current directory
+strings_file_path = os.path.join(current_dir, "Localizable.xcstrings")
+
+# Load the content as a JSON object
+with open(strings_file_path, 'r', encoding='utf-8') as file:
+    xcstrings_content = file.read()
+
+# Parse the xcstrings content as JSON
+xcstrings_data = json.loads(xcstrings_content)
+
+# Prepare a dictionary to store translations for each language
+localizable_by_language = {}
+
+# Extract strings for all available languages
+for key, value in xcstrings_data['strings'].items():
+    if 'localizations' in value:
+        for lang_code, localization in value['localizations'].items():
+            translation = localization.get('stringUnit', {}).get('value', '')
+            if translation:
+                if lang_code not in localizable_by_language:
+                    localizable_by_language[lang_code] = []
+                localizable_by_language[lang_code].append(f'"{key}" = "{translation}";\n')
+
+# Write Localizable.strings files for each language
+for lang_code, translations in localizable_by_language.items():
+    # Create the directory for the language (e.g., en.lproj, ko.lproj)
+    lang_dir_path = os.path.join(current_dir, f"{lang_code}.lproj")
+    os.makedirs(lang_dir_path, exist_ok=True)
+
+    # Write the Localizable.strings file in the respective language directory
+    lang_file_path = os.path.join(lang_dir_path, 'Localizable.strings')
+    with open(lang_file_path, 'w', encoding='utf-8') as lang_file:
+        lang_file.writelines(translations)
+
+    print(f"Generated {lang_file_path}")
